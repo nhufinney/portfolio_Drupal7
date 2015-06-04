@@ -1,0 +1,46 @@
+body {
+  background: #dedcd9;
+}
+
+a {
+  color: #e6f2ee;
+}
+
+a:hover {
+  color: #e0f2f5;
+}
+
+#headright {
+  background: #f3f7f5;
+}
+
+#main-menu li li a,
+#main-menu li li a:link,
+#main-menu li li a:visited {
+  background-color: #eff8f8;
+}
+
+#main-menu li li a:hover,
+#main-menu li li a:active {
+  background: #e5eeee;
+}
+
+.sidebar .block > h2 {
+  background: #f1f8f3;
+}
+
+#bottom {
+  background: #e2eeda;
+}
+
+#copyright {
+  background: #e8f6f3;
+}
+
+.form-submit{
+  background-color: #d6e8e1;
+}
+
+.form-submit:hover{
+  background: #eaf3f3;
+}

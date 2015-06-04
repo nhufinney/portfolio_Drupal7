@@ -1300,3 +1300,36 @@ border-left: 1px solid; border-right: 1px solid; height: 40px; margin-left: -36p
 #forum .name a{
   font-size: 16px;
 }
+
+#site-name{
+opacity: 0.8;
+  -webkit-filter: grayscale(90%);
+  -moz-filter: grayscale(90%);
+  -ms-filter: grayscale(90%);
+  -o-filter: grayscale(90%);
+  filter: grayscale(90%);
+  filter: url(grayscale.svg); /* Firefox 4+ */
+  filter: gray; /* IE 6-9 */
+}
+
+.field-items p{
+    opacity: 0.9;
+      -webkit-filter: grayscale(60%);
+      -moz-filter: grayscale(50%);
+      -ms-filter: grayscale(50%);
+      -o-filter: grayscale(50%);
+      filter: grayscale(50%);
+      filter: url(grayscale.svg); /* Firefox 4+ */
+      filter: gray; /* IE 6-9 */
+}
+
+.linkedin {
+    opacity: 0.7;
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(80%);
+    -ms-filter: grayscale(80%);
+    -o-filter: grayscale(80%);
+    filter: grayscale(80%);
+    filter: url(grayscale.svg); /* Firefox 4+ */
+    filter: gray; /* IE 6-9 */
+}
