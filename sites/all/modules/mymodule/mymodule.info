@@ -1,0 +1,5 @@
+name = Book Review Use Ajax Node Loader
+description = Book Review Use Ajax Node Loader
+package = Epicodus 
+core = 7.x
+files[] = mymodule.module
