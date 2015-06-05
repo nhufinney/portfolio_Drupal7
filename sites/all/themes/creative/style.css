@@ -1333,3 +1333,7 @@ opacity: 0.8;
     filter: url(grayscale.svg); /* Firefox 4+ */
     filter: gray; /* IE 6-9 */
 }
+
+.field-items a{
+    color: blue;
+}
