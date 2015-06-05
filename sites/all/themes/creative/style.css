@@ -1342,6 +1342,30 @@ opacity: 0.8;
     display: none;
 }
 
+.page-title{
+    display: none;
+}
+
 #mymodule-ajax-wrapper p{
     font-weight: bold;
+}
+
+.block-social-media-links h2 {
+    display: none;
+}
+
+.breadcrumb {
+    display: none;
+}
+
+.tabs-wrapper{
+    display: none;
+}
+
+.content .first{
+    display: none;
+}
+
+.content .first {
+    display: none;
 }

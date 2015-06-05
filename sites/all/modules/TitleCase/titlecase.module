@@ -1,0 +1,55 @@
+<?php
+    function titlecase_menu() {
+        $items['titlecase'] = array(
+            'title' => 'Title Case Generator',
+            'page callback' => 'drupal_get_form',
+            'page arguments' => array('titlecase_form'),
+            'access callback' => TRUE,
+            'type' => MENU_NORMAL_ITEM,
+        );
+
+        $items['titlecase_result'] = array(
+            'title' => 'Result',
+            'page callback' => 'titlecase_result',
+            'access callback' => TRUE,
+            'type' => MENU_CALLBACK,
+        );
+
+        return $items;
+    }
+
+//FORM INPUT AND PROCESSING
+    function titlecase_form() {
+        $form['input'] = array(
+            '#title' => 'Your input',
+            '#type' => 'textfield',
+            '#description' => t('Please enter the phrase you want to convert.'),
+        );
+
+        $form['submit'] = array(
+            '#type' => 'submit',
+            '#value' => 'Convert to Title Case',
+        );
+
+        return $form;
+    }
+
+    function titlecase_form_submit($form, &$form_state) {
+        $input = $form_state['values']['input'];
+        $separate = explode(" ", $input);
+        $list = [];
+
+        foreach($separate as $word) {
+            array_push($list, ucfirst($word));
+        }
+        $output = implode(" ", $list);
+
+        $_SESSION['titlecase_output'] = $output;
+
+        $form_state['redirect'] = 'titlecase_result';
+    }
+
+    function titlecase_result() {
+        $result = $_SESSION['titlecase_output'];
+        return 'Your phrase in title case looks like this: ' . $result;
+    }

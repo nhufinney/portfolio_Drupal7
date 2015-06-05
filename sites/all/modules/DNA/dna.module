@@ -1,0 +1,58 @@
+<?php
+
+function dna_menu() {
+    $items = array();
+    $items['dna-form'] = array(
+        'title' => 'DNA Form',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('dna_form'),
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+    );
+
+    $items['dna_results'] = array(
+        'title' => 'Half of the other DNA helix',
+        'page callback' => 'dna_results',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
+
+    return $items;
+}
+
+//create an input form
+function dna_form() {
+    $form['dna'] = array(
+        '#title' => 'DNA molecule',
+        '#type' => 'textfield',
+        '#description' => t('Enter one half of your DNA hlix, just 4 letters A T C G only: '),
+        '#element_validate' => array('element_validate_text'),
+        '#required' => TRUE,
+    );
+    $form['submit'] = array(
+        '#type' => 'submit',
+        '#value' => 'Submit',
+    );
+
+    return $form;
+}
+
+//save input values in $_SESSION
+function dna_form_submit($form, &$form_state) {
+    $dna = strtoupper($form_state['values']['dna']);
+    $_SESSION['dna'] = $dna;
+    $form_state['redirect'] = 'dna_results';
+}
+
+//Validation the text input
+function element_validate_text($element) {
+    if(preg_match('/[^ATCGatcg]/', $element['#value'])) {
+        form_error($element, t('Only 4 letters "A", "T", "C" and "G" are accepted.'));
+    }
+}
+
+function dna_results(){
+    $dna = $_SESSION['dna'];
+
+
+}; //close foreach of $shift_phrase

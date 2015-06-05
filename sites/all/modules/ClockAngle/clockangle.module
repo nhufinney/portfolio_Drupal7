@@ -1,0 +1,68 @@
+<?php
+
+function clockangle_menu() {
+    $items = array();
+    $items['clockangle'] = array(
+        'title' => 'Clock Angle',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('clockangle_form'),
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+    );
+    $items['clockangle_success'] = array(
+        'title' => 'Success',
+        'page callback' => 'clockangle_success',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
+    return $items;
+}
+
+function clockangle_form() {
+    $form['input_hour'] = array(
+        '#title' => 'Hour',
+        '#type' => 'textfield',
+        '#description' => t('Enter hour:'),
+    );
+    $form['input_minute'] = array(
+        '#title' => 'Minute',
+        '#type' => 'textfield',
+        '#description' => t('Enter minute:'),
+    );
+    $form['submit'] = array(
+        '#type' => 'submit',
+        '#value' => 'Go',
+    );
+    return $form;
+}
+
+function clockangle_form_submit($form, &$form_state) {
+    $hour = $form_state['values']['input_hour'];
+    $minute = $form_state['values']['input_minute'];
+    $hourhand = $hour;
+    $minutehand = $minute;
+    if ($hourhand >=12){
+        $hourhand -= 12;
+    }
+    $_SESSION['hour'] = $hour;
+
+
+    $minute_degree = $minutehand * 6;
+    $hour_degree = ($minutehand * 0.5) + $hourhand*30;
+    $total_angle = abs($hour_degree - $minute_degree);
+
+    if ($total_angle > 180) {
+        $total_angle = 360 - $total_angle;
+    }
+
+    $_SESSION['clockangle_output'] = $total_angle;
+    $_SESSION['minute'] = $minute;
+    $form_state['redirect'] = 'clockangle_success';
+}
+
+function clockangle_success() {
+    $output = $_SESSION['clockangle_output'];
+    $hour = $_SESSION['hour'];
+    $minute =  $_SESSION['minute'];
+    return "The degree of the angle between the hour and minute hands at <strong>$hour:$minute</strong> is $output degree";
+}
