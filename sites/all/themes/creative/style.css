@@ -1337,3 +1337,11 @@ opacity: 0.8;
 .field-items a{
     color: blue;
 }
+
+#first-time{
+    display: none;
+}
+
+#mymodule-ajax-wrapper p{
+    font-weight: bold;
+}
