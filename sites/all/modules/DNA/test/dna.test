@@ -1,0 +1,71 @@
+<?php
+class testDNACompletion extends DrupalUnitTestCase {
+
+    public static function getInfo() {
+        return array(
+            'name' => "DNA Test",
+            'description' => "Test the DNA completion module",
+            'group' => "DNA Unit Test",
+        );
+    }
+    function testDNA_T() {
+        //Arrange
+        $input = "T";
+
+        //Act
+        $result = dna_complete($input);
+
+        //Assert
+        $this->assertEqual($result, "A");
+    }
+    function testDNA_A() {
+        //Arrange
+        $input = "A";
+
+        //Act
+        $result = dna_complete($input);
+
+        //Assert
+        $this->assertEqual($result, "T");
+    }
+    function testDNA_C() {
+        //Arrange
+        $input = "C";
+
+        //Act
+        $result = dna_complete($input);
+
+        //Assert
+        $this->assertEqual($result, "G");
+    }
+    function testDNA_G() {
+        //Arrange
+        $input = "G";
+
+        //Act
+        $result = dna_complete($input);
+
+        //Assert
+        $this->assertEqual($result, "C");
+    }
+    function testDNA_two_letters() {
+        //Arrange
+        $input = "ag";
+
+        //Act
+        $result = dna_complete($input);
+
+        //Assert
+        $this->assertEqual($result, "T C");
+    }
+    function testDNA_many_letters() {
+        //Arrange
+        $input = "agtatt";
+
+        //Act
+        $result = dna_complete($input);
+
+        //Assert
+        $this->assertEqual($result, "T C A T A A");
+    }
+}

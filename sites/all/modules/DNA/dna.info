@@ -3,3 +3,5 @@ description = Generatethe other half of DNA helix.
 package = Epicodus
 core = 7.x
 files[] = dna.module
+files[] = test/dna.test
+dependencies[] = simpletest
